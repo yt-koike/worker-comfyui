@@ -56,6 +56,7 @@ RUN if [ -n "${CUDA_VERSION_FOR_COMFY}" ]; then \
     else \
       /usr/bin/yes | comfy --workspace /comfyui install --version "${COMFYUI_VERSION}" --nvidia; \
     fi
+RUN comfy node install comfy-asset-downloader
 
 # Upgrade PyTorch if needed (for newer CUDA versions)
 RUN if [ "$ENABLE_PYTORCH_UPGRADE" = "true" ]; then \
